@@ -9,8 +9,9 @@ router.use(function(req, res, next){
   next();
 });
 router.get('/', function(req, res){
-  res.send('welcome');
+  //res.send('welcome');
   //show intro page with jade
+  UrlController.index(req, res);
 });
 router.get('/new/*', function(req, res){
   var longurl = url.parse(req.path.replace('/new/', ''));

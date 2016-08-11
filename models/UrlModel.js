@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/urlshortener');
+var mongoUri =
+  process.env.MONGOLAB_URI ||
+  'mongodb://localhost/urlshortener';
+mongoose.connect(mongoUri);
 
 var db = mongoose.connection;
 

@@ -5,11 +5,12 @@ exports.index = function(req, res){
   UrlModel.find(function(err, result){
     if(err) {
       console.log('Url not found');
+      res.json(err);
     }
     else {
       res.pageInfo.title = 'Urls';
       res.pageInfo.urls = result;
-      response.json(res.pageInfo);
+      res.json(res.pageInfo);
     }
   });
 };
