@@ -12,7 +12,7 @@ db.on('error', function(){
 });
 
 db.once('open', function(){
-  console.log('connected to ' + mongoUri);
+  console.log('Connected to ' + mongoUri);
 });
 
 var UrlSchema = mongoose.Schema({
