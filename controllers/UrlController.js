@@ -49,7 +49,12 @@ exports.UrlRedirect = function(req, res){
           console.log('Couldnt find shorturl');
           res.json(err);
         }
-        res.redirect(result.longurl);
+        if(result){
+          res.redirect(result.longurl);
+        } else {
+          console.log('Couldnt find shorturl');
+          res.json({error: 'Couldnt find shorturl'});          
+        }
       }
     );
   }
