@@ -8,6 +8,7 @@ exports.index = function(req, res){
       res.json(err);
     }
     else {
+      res.pageInfo ={};
       res.pageInfo.title = 'Urls';
       res.pageInfo.urls = result;
       res.json(res.pageInfo);
@@ -27,7 +28,6 @@ exports.UrlCreate = function(req, res){
     if(err){
       console.log('Couldnt save new url');
       res.json(err);
-      //res.json({error: 'Couldnt save new url'})
     } else {
       res.json({
         longurl: u.longurl,
@@ -38,15 +38,19 @@ exports.UrlCreate = function(req, res){
 };
 
 exports.UrlRedirect = function(req, res){
-  UrlModel.findOne(
-    {shorturl: req.params.shortid},
-    //longurl,
-    function(err, result){
-      if(err) {
-        console.log('Couldnt find shorturl');
-        res.json(err);
+  if(!shortid.isValid(req.params.shortid)){
+    console.log('Not a valid short url');
+    res.json({error: 'Not a valid short url'});
+  } else {
+    UrlModel.findOne(
+      {shorturl: req.params.shortid},
+      function(err, result){
+        if(err) {
+          console.log('Couldnt find shorturl');
+          res.json(err);
+        }
+        res.redirect(result.longurl);
       }
-      res.redirect(result.longurl);
-    }
-  );
+    );
+  }
 };

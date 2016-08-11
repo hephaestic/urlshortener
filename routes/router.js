@@ -13,6 +13,7 @@ router.get('/', function(req, res){
   //show intro page with jade
   UrlController.index(req, res);
 });
+
 router.get('/new/*', function(req, res){
   var longurl = url.parse(req.path.replace('/new/', ''));
   var validlongUrl =
@@ -30,5 +31,10 @@ router.get('/new/*', function(req, res){
 router.get('/:shortid', function(req, res){
   UrlController.UrlRedirect(req, res);
 });
+
+router.all('*', function(req, res){
+  console.log('No routes');
+  res.json({error: 'No matching routes'});
+})
 
 module.exports = router;
