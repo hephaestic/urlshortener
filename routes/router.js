@@ -1,5 +1,4 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 var url = require('url');
 var validator = require('valid-url');
 var UrlController = require('../controllers/UrlController.js');
@@ -8,6 +7,7 @@ router.use(function(req, res, next){
   console.log(req.method, req.url);
   next();
 });
+
 router.get('/', function(req, res){
   //res.send('welcome');
   //show intro page with jade

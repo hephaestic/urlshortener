@@ -11,7 +11,7 @@ db.on('error', function(){
 });
 
 db.once('open', function(){
-  console.log('DB connected');
+  console.log('connected to ' + mongoUri);
 });
 
 var UrlSchema = mongoose.Schema({

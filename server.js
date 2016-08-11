@@ -1,6 +1,4 @@
-var express = require('express')
-var app = express();
-var mongo = require('mongodb').MongoClient;
+var app = require('express')();
 
 var router = require('./routes/router.js');
 app.use('/', router);
