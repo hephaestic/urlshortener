@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var mongoUri =
   process.env.MONGOLAB_URI ||
-  'mongodb://localhost/urlshortener';
+  'mongodb://heroku_3v470bmt:q9f0f9oi1hiv6tmkpt48h87f64@ds153735.mlab.com:53735/heroku_3v470bmt';
+  //'mongodb://kevin:kevin@ds153735.mlab.com:53735/heroku_3v470bmt';
+  //'mongodb://localhost/urlshortener';
 mongoose.connect(mongoUri);
 
 var db = mongoose.connection;
